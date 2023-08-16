@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+  plataforma:
+    build:
+      context: ./plataforma
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./plataforma:/app
+      - /app/src/node_modules
+    image: ${COMPOSE_PROJECT_NAME}-frontend
+    labels:
+      traefik.frontend.rule: "Host:${DOMAIN}"
+      traefik.frontend.entryPoints: "http"
+      traefik.protocol: "http"
+      traefik.port: "3000"
+      traefik.enable: "true"
+    depends_on:
+      - traefik
+    networks:
+      - ${COMPOSE_PROJECT_NAME}
+    restart: unless-stopped
+
+  traefik:
+    image: traefik:v1.7
+    command: --api --docker # Enables the web UI and tells Traefik to listen to docker
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - ${COMPOSE_PROJECT_NAME}
+
+networks:
+  plataforma:
+    driver: bridge
+    name: ${COMPOSE_PROJECT_NAME}
