@@ -7,8 +7,8 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - ./plataforma:/app
-      - /app/src/node_modules
-    image: ${COMPOSE_PROJECT_NAME}-frontend
+      - /app/node_modules
+    image: ${COMPOSE_PROJECT_NAME}-plataforma
     labels:
       traefik.frontend.rule: "Host:${DOMAIN}"
       traefik.frontend.entryPoints: "http"
@@ -17,8 +17,6 @@ services:
       traefik.enable: "true"
     depends_on:
       - traefik
-    networks:
-      - ${COMPOSE_PROJECT_NAME}
     restart: unless-stopped
 
   traefik:
@@ -30,10 +28,3 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - ${COMPOSE_PROJECT_NAME}
-
-networks:
-  plataforma:
-    driver: bridge
-    name: ${COMPOSE_PROJECT_NAME}
