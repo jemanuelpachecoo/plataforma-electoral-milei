@@ -4,8 +4,10 @@
 
 #while true; do sleep 1000; done
 
+mkdir -p /app/.docusaurus
+chmod -R 777 /app/.docusaurus
+
 npm run build
 
-chmod -R 777 /app/.docusaurus
 
 npm run start
