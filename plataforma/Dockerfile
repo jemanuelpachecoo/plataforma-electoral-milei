@@ -10,6 +10,7 @@ RUN apk add bash
 WORKDIR /app
 COPY . .
 RUN npm install
+RUN chown -R ${USER}:${GROUP} .
 
 USER ${USER}:${GROUP}
 
