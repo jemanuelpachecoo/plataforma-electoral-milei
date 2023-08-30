@@ -10,4 +10,4 @@ chmod -R 777 /app/.docusaurus
 npm run build
 
 
-npm run start
+npm run serve
