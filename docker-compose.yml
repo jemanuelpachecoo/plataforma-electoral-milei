@@ -19,6 +19,18 @@ services:
       - traefik
     restart: unless-stopped
 
+  plataforma-build:
+    image: jemanuelp/fiscales-milei:latest
+    labels:
+      traefik.frontend.rule: "Host:${DOMAIN}"
+      traefik.frontend.entryPoints: "http"
+      traefik.protocol: "http"
+      traefik.port: "3000"
+      traefik.enable: "true"
+    depends_on:
+      - traefik
+    restart: unless-stopped
+
   traefik:
     image: traefik:v1.7
     command: --api --docker # Enables the web UI and tells Traefik to listen to docker
