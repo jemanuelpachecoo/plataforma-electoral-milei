@@ -6,4 +6,6 @@
 
 npm run build
 
+RUN chmod -R 777 /app/.docusaurus
+
 npm run start
