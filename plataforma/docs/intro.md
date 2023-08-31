@@ -4,24 +4,24 @@ sidebar_position: 1
 
 # Introducción
 
-## BASES DE ACCIÓN POLITICA Y PLATAFORMA ELECTORAL NACIONAL
+## BASES DE ACCIÓN POLÍTICA Y PLATAFORMA ELECTORAL NACIONAL
 
-El liberalismo es el respeto irrestricto del proyecto de vida del prójimo basado en 
-el principio de no agresión. y en la defensa del derecho a la vida, la libenad y la 
-propiedad privada. Sus instituciones fundamenta.les son los mercados 6bres de intervención 
+El liberalismo es el respeto irrestricto del proyecto de vida del prójimo basado en
+el principio de no agresión y en la defensa del derecho a la vida, la libertad y la
+propiedad privada. Sus instituciones fundamentales son los mercados libres de intervención
 del Estado, la libre competencia, la división del trabajo y la cooperación social.
 
-A la luz de to expresado, precepto fundante para el ejercicio de su actividad
-polit.Ca en el territorio de la Repúbl,Ca Argantina, ta alianza La Libertad Avanz.a -
+A la luz de lo expresado, precepto fúndante para el ejercicio de su actividad
+política en el territorio de la República Argentina, ta alianza La Libertad Avanza -
 que aspira a la candidatura de Javier Milei como Presidente de la Nación 2023 ~
 propone sus Bases de Acción Política y esta Plataforma Electoral Nacional.
 
 ### MISIÓN
 
 La Libertad Avanza es una alianza de gobierno, que reúne, convoca y se
-dirige a hombtes y mujeres de toda condición social, conformada por distintos
-partidos políticos, y creada para impulsar potiticas liberales que coadyuven al
-despegue económico, politico, cultural y social que los argentinos necesitamos para
+dirige a hombres y mujeres de toda condición social, conformada por distintos
+partidos políticos, y creada para impulsar políticas liberales que coadyuven al
+despegue económico, político, cultural y social que los argentinos necesitamos para
 volver a ser el país pujante que éramos a comienzos del año 1.900.
 
 ### VISIÓN
@@ -53,15 +53,15 @@ A principios del siglo pasado la matriz productiva de la Argentina se mantenía
 gracias al esfuerzo, trabajo y motivaciones de ascenso social de su clase media
 trabajadora, (envidiada en el resto del mundo) quienes producto del sacrificio
 personal y colectivo encontraban en esta "tierra prometida" el lugar para crecer que
-les era negado en sus paises de origen.
+les era negado en sus países de origen.
 
 Los gobiernos populistas y totalitarios que marcaron el cambio de época de
-mediados del siglo pasado, coadyuvaron para la relajación de esa metodotogia de
+mediados del siglo pasado, coadyuvaron para la relajación de esa metodología de
 vida y trabajo. La intromisión del estado paternalista, que proveía de bienes de capital
 a sus habitantes, inhibió la iniciativa privada de crecimiento de esa clase media y
 fundamentalmente de las clases más bajas y necesitadas, y llevo a la relajación de
 los esfuerzos que nos han colocado en el estado de situación actual: un 50% de la
-población por debajo de la linea de pobreza, disminución drástica de las empresas
+población por debajo de la línea de pobreza, disminución drástica de las empresas
 privadas argentinas, indices de analfabetismos impensados cuando ya el siglo
 pasado fuimos el primer país del mundo en erradicarlo y donde la mayoría de los
 egresados del sistema educativo no comprenden textos, fuga de cerebros de los
@@ -75,21 +75,21 @@ supieron, no quisieron o no pudieron" revertir, agravando aún más el problema.
 
 Ese estado paternalista ha salido a competir con la iniciativa privada de las
 empresas, las personas y particularmente los jóvenes, que terminaron quebrando o
-yéndose del pais en busca de mejores condiciones económicas, jurídicas y laborales
-en pos de la esperanza y en busqueda de su crecimiento.
+yéndose del país en busca de mejores condiciones económicas, jurídicas y laborales
+en pos de la esperanza y en búsqueda de su crecimiento.
 
-Asi transcurrieron mas de 70 años, y revertir y concretar la reforma integral
+Así transcurrieron más de 70 años, y revertir y concretar la reforma integral
 que se necesita costara, según lo proyectado desde La Libertad Avanza, 35 años, en
 tres etapas sucesivas.
 
-La primera etapa imptica un fuerte recorte del gasto público del Estado y una
+La primera etapa implica un fuerte recorte del gasto público del Estado y una
 reforma tributaria que empuje una baja de los impuestos la flexibilización laboral para
 la creación de empleos en el sector privado y una apertura unilateral al comercio
-internacional. Ello acompañado por una reforma financiera impulse una banca libre y
+internacional. Ello acompañado por una reforma financiera, impulse una banca libre y
 desregulada junto a la libre competencia de divisas.
 
 En cuanto a la segunda generación se propone una reforma previsional para
-recortar et gasto del estado en jubilaciones y pensiones de los items que más
+recortar el gasto del estado en jubilaciones y pensiones de los ítems que más
 empujan el déficit fiscal alentando un sistema de capitalización privado, junto a un
 programa de retiros voluntarios de empleados públicos y achicamiento del estado.
 Por otro lado se propone reducir el número de ministerios a 8. En esta etapa
