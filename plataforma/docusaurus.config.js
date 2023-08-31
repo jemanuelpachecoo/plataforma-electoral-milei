@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'PLATAFORMA ELECTORAL NACIONAL',
   tagline: 'BASES DE ACCIÓN POLITICA Y',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/lion.png',
 
   // Set the production url of your site here
   url: 'https://your-docusaurus-test-site.com',
@@ -67,7 +67,7 @@ const config = {
         title: 'Inicio',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/lion1.png',
+          src: 'img/lion.png',
         },
         items: [
           {
@@ -77,11 +77,11 @@ const config = {
             label: 'Plataforma',
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
-          },
+          // {
+          //   href: 'https://github.com/facebook/docusaurus',
+          //   label: 'GitHub',
+          //   position: 'right',
+          // },
         ],
       },
       footer: {
