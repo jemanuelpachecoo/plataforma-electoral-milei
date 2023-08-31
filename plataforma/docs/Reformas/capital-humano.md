@@ -67,7 +67,7 @@ eso proponemos:
 8. Proteger al niño desde la concepción, y al adulto mayor hasta su muerte
    natural.
 
-9. Modificar la Ley de salud mental.
+9. Modificar la Ley de salud mental. [Ley 26.657](https://www.argentina.gob.ar/normativa/nacional/ley-26657-175977/texto)
 
 10. Entrenar a los efectores de salud en el control del niño sano (crecimiento
     y desarrollo) para pesquisar maltrato infantil.
@@ -156,3 +156,5 @@ eso proponemos:
 9. Modificación de diseño curricular aplicado a las intervenciones
    necesarias en función de los profesionales que necesita el País. (ingenieros,
    informáticos, etc.).
+
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/DkGyH-E82uI" title="El modelo de MILEI para la educación Argentina: La Educación Privada Sueca  - VisualEconomik" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

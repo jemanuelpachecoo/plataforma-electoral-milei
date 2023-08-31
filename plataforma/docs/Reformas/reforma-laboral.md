@@ -22,7 +22,7 @@ sidebar_position: 3
 7. Creación de una bolsa de trabajo pública con financiamiento privado.
 
 8. Reemplazar la actual Ley de Riesgos del Trabajo, sin efecto retroactivo, por
-   una legislación acorde al contexto internacional.
+   una legislación acorde al contexto internacional. [Ley N° 24.557](https://www.argentina.gob.ar/normativa/nacional/27971/actualizacion)
 
 9. Recuperación y jerarquización de la carrera administrativa estatal.
 

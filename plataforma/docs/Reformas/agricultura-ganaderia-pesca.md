@@ -33,7 +33,7 @@ Por ello es urgente proceder a:
 4. Simplificar y unificar distintas tramitaciones que deben ser comunes para
    AFIP, SENASA, INTA, TÍÑASE, Rentas, entre otras.
 
-5. Derogar la Ley 26737 (Ley de tierras) para que cualquier persona, nacional o
+5. Derogar la [Ley 26737](https://www.argentina.gob.ar/normativa/nacional/ley-26737-192150/actualizacion) (Ley de tierras) para que cualquier persona, nacional o
    extranjera, tenga libre acceso a la propiedad de ta tierra.
 
 6. Propiciar una agricultura que aplique las buenas prácticas, contemplando la
