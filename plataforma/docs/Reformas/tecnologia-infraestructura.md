@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 4
 ---
 
 # TECNOLOGÍA E INFRAESTRUCTURA
@@ -18,7 +18,7 @@ sidebar_position: 9
 6. Promover la renovación de las maquinarias y tecnología de las empresas vía
    inversiones de capital nacional e internacional.
 
-7. Articular los resortes necesarios para ta obtención de créditos blandos y a
+7. Articular los resortes necesarios para la obtención de créditos blandos y a
    largo plazo para llevar a cabo las actividades proyectadas ut supra.
 
 8. Promover los convenios internacionales de intercambio comercial.
