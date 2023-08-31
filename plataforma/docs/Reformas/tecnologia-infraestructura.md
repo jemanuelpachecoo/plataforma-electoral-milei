@@ -37,7 +37,7 @@ sidebar_position: 4
 13. Proponer a las empresas privadas la extensión de los servicios de cloacas, luz,
     agua potable y gas a los puntos críticos de la Nación.
 
-14. Promover desde el Estado la reparación y ampliación de tas redes ferroviarias
+14. Promover desde el Estado la reparación y ampliación de las redes ferroviarias
     con recursos privados.
 
 15. Crear centros tecnológicos para el desarrollo de redes neuronales,
