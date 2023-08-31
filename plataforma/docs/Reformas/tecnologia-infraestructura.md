@@ -2,26 +2,26 @@
 sidebar_position: 9
 ---
 
-# TECNOLOGIA E INFRAESTRUCTURA
+# TECNOLOGÍA E INFRAESTRUCTURA
 
 1. Expandir la industria naval.
 
 2. Incentivar la inversión en turismo.
 
-3. Promover el desarrollo tecnológico de la agricultura, pesca, mineria.
+3. Promover el desarrollo tecnológico de la agricultura, pesca, minería.
 
-ganadería y agroindustria.
+Ganadería y agroindustria.
 
 4. Promover las inversiones para la creación de unicornios tecnológicos,
-tecnologia digital e inteligencia artificial. 
+   tecnología digital e inteligencia artificial.
 
 5. Mejorar los procesos productivos y de servicios.
 
-6. Promover la renovación de las maquinarias y tecnotogia de las empresas via
-inversiones de capital nacional e internacional.
+6. Promover la renovación de las maquinarias y tecnología de las empresas vía
+   inversiones de capital nacional e internacional.
 
 7. Articular los resortes necesarios para ta obtención de créditos blandos y a
-largo ptazo para llevar a cabo las actividades proyectadas ut supra.
+   largo plazo para llevar a cabo las actividades proyectadas ut supra.
 
 8. Promover los convenios internacionales de intercambio comercial.
 
