@@ -22,8 +22,8 @@ jobs:
       - run:
           name: Build and Push Docker Image to Docker Hub
           command: |
-            cd api
-            API_IMAGE_NAME="jemanuelp/whatsapp-bridge"
+            cd plataforma
+            API_IMAGE_NAME="jemanuelp/plataforma-electoral-milei"
             echo "Construyendo la imagen de Docker API..."
             docker build -t $API_IMAGE_NAME:$CIRCLE_SHA1 -t $API_IMAGE_NAME:latest .
 
@@ -65,9 +65,9 @@ jobs:
             echo $JWT > portainer-jwt.token
 
       - run:
-          name: Obtener ID del stack "whatsapp-bridge"
+          name: Obtener ID del stack "plataforma-electoral-milei"
           command: |
-            echo "Obteniendo ID del stack con Name: 'whatsapp-bridge' desde la API de Portainer..."
+            echo "Obteniendo ID del stack con Name: 'plataforma-electoral-milei' desde la API de Portainer..."
             
             # Leer el JWT guardado en el archivo
             JWT=$(cat portainer-jwt.token)
@@ -77,19 +77,19 @@ jobs:
               --header "Authorization: Bearer $JWT")
 
             echo $RESPONSE
-            # Filtrar el ID del stack llamado "whatsapp-bridge"
-            STACK_ID=$(echo $RESPONSE | jq -r '.[] | select(.Name == "whatsapp-bridge") | .Id')
+            # Filtrar el ID del stack llamado "plataforma-electoral-milei"
+            STACK_ID=$(echo $RESPONSE | jq -r '.[] | select(.Name == "plataforma-electoral-milei") | .Id')
 
             # Validar si el ID fue obtenido correctamente
             if [ -z "$STACK_ID" ] || [ "$STACK_ID" = "null" ]; then
-              echo "Error: No se pudo encontrar el stack con Name: 'whatsapp-bridge'."
+              echo "Error: No se pudo encontrar el stack con Name: 'plataforma-electoral-milei'."
               exit 1
             else
-              echo "Se obtuvo correctamente el ID del stack 'whatsapp-bridge': $STACK_ID"
+              echo "Se obtuvo correctamente el ID del stack 'plataforma-electoral-milei': $STACK_ID"
             fi
 
             # Guardar el ID en un archivo temporal si necesitas usarlo en varios pasos
-            echo $STACK_ID > stack-whatsapp-bridge-id.txt
+            echo $STACK_ID > stack-plataforma-electoral-milei-id.txt
 
       - run:
           name: Validar archivo docker-compose.yml y cargar stack en Portainer
@@ -100,7 +100,7 @@ jobs:
             JWT=$(cat portainer-jwt.token)
 
             # Leer el ID del stack desde el archivo
-            STACK_ID=$(cat stack-whatsapp-bridge-id.txt)
+            STACK_ID=$(cat stack-plataforma-electoral-milei-id.txt)
 
             # Definir la ruta al archivo docker-compose.yml
             DOCKER_COMPOSE_PATH="deploy/truenas/docker-compose.yml"
