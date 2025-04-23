@@ -1,0 +1,1 @@
+docker service rm plataforma-electoral-milei_plataforma-electoral-milei

@@ -1,5 +1,5 @@
 services:
-  whatsapp-bridge:
+  plataforma-electoral-milei:
     image: "jemanuelp/plataforma-electoral-milei:latest"
     deploy:
       replicas: 1
