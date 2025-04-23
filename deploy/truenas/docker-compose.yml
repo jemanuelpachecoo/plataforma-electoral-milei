@@ -1,6 +1,6 @@
 services:
   whatsapp-bridge:
-    image: "jemanuelp/whatsapp-bridge:latest"
+    image: "jemanuelp/plataforma-electoral-milei:latest"
     deploy:
       replicas: 1
       update_config:
@@ -11,57 +11,12 @@ services:
       restart_policy:
         condition: on-failure
     environment:
-      - HOST=http://${API_URL}
-      - API_URL=${API_URL}
-      - API_PORT=${API_PORT}
-      - RABBIT_HOST=${RABBIT_HOST}
-      - DB_PROVIDER=${DB_PROVIDER}
-      - WHATSAPP_API_KEY=${WHATSAPP_API_KEY}
-      - WHATSAPP_BASE_PATH=${WHATSAPP_BASE_PATH}
-      - REDIS_HOST=${REDIS_HOST}
-      - REDIS_PORT=${REDIS_PORT}
+      - DOMAIN=${DOMAIN}
     ports:
       - 31018:${API_PORT}
-    secrets:
-      - source: whatsapp_bridge_db_read_uri
-        target: db_read_uri
-      - source: whatsapp_bridge_db_write_uri
-        target: db_write_uri
-      - source: whatsapp_bridge_jwt_public_key
-        target: jwt_public_key
-      - source: whatsapp_bridge_jwt_private_key
-        target: jwt_private_key
-    networks:
-      - whatsapp
-
-  migrations:
-    image: "jemanuelp/whatsapp-bridge-migrations:latest"
-    deploy:
-      replicas: 1
-      update_config:
-        parallelism: 1
-        delay: 10s
-        failure_action: rollback
-        order: start-first
-      restart_policy:
-        condition: none
-    working_dir: /var/www/
-    secrets:
-      - source: whatsapp_bridge_db_write_uri
-        target: db_write_uri
     networks:
       - whatsapp
 
 networks:
   whatsapp:
-    external: true
-
-secrets:
-  whatsapp_bridge_db_read_uri:
-    external: true
-  whatsapp_bridge_db_write_uri:
-    external: true
-  whatsapp_bridge_jwt_public_key:
-    external: true
-  whatsapp_bridge_jwt_private_key:
     external: true
