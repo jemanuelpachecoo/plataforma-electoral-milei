@@ -1,0 +1,183 @@
+version: 2.1
+
+executors:
+  docker-executor:
+    docker:
+      - image: cimg/base:stable
+    working_directory: ~/repo
+    resource_class: medium
+
+jobs:
+  build-and-push-dockerhub:
+    executor: docker-executor
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - run:
+          name: Login to Docker Hub
+          command: |
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+
+      - run:
+          name: Build and Push Docker Image to Docker Hub
+          command: |
+            cd api
+            API_IMAGE_NAME="jemanuelp/whatsapp-bridge"
+            echo "Construyendo la imagen de Docker API..."
+            docker build -t $API_IMAGE_NAME:$CIRCLE_SHA1 -t $API_IMAGE_NAME:latest .
+
+            echo "Subiendo la imagen a Docker Hub..."
+            docker push $API_IMAGE_NAME:$CIRCLE_SHA1
+            docker push $API_IMAGE_NAME:latest
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - deploy/truenas/docker-compose.yml
+
+  deploy-to-portainer:
+    executor: docker-executor
+    steps:
+      - attach_workspace:
+          at: .
+
+      - run:
+          name: Login portainer
+          command: |
+            echo "Autenticando con la API de Portainer..."
+              RESPONSE=$(curl --silent --location "$PORTAINER_HOST/api/auth" \
+              --header 'Content-Type: application/json' \
+              --data "{\"Username\": \"$PORTAINER_USER\", \"Password\": \"$PORTAINER_PASSWORD\"}")
+
+            # Extraer el JWT del JSON de respuesta
+            JWT=$(echo $RESPONSE | jq -r '.jwt')
+
+            # Validar si el token fue correctamente obtenido
+            if [ -z "$JWT" ] || [ "$JWT" = "null" ]; then
+              echo "Error al obtener el token JWT desde Portainer."
+              exit 1
+            else
+              echo "Token JWT obtenido correctamente: $JWT"
+            fi
+
+            # Guardar el token en un archivo temporal si necesitas reutilizarlo en posteriores pasos
+            echo $JWT > portainer-jwt.token
+
+      - run:
+          name: Obtener ID del stack "whatsapp-bridge"
+          command: |
+            echo "Obteniendo ID del stack con Name: 'whatsapp-bridge' desde la API de Portainer..."
+            
+            # Leer el JWT guardado en el archivo
+            JWT=$(cat portainer-jwt.token)
+
+            # Hacer la solicitud a la API de Portainer para obtener los stacks
+            RESPONSE=$(curl --silent --location "$PORTAINER_HOST/api/stacks" \
+              --header "Authorization: Bearer $JWT")
+
+            echo $RESPONSE
+            # Filtrar el ID del stack llamado "whatsapp-bridge"
+            STACK_ID=$(echo $RESPONSE | jq -r '.[] | select(.Name == "whatsapp-bridge") | .Id')
+
+            # Validar si el ID fue obtenido correctamente
+            if [ -z "$STACK_ID" ] || [ "$STACK_ID" = "null" ]; then
+              echo "Error: No se pudo encontrar el stack con Name: 'whatsapp-bridge'."
+              exit 1
+            else
+              echo "Se obtuvo correctamente el ID del stack 'whatsapp-bridge': $STACK_ID"
+            fi
+
+            # Guardar el ID en un archivo temporal si necesitas usarlo en varios pasos
+            echo $STACK_ID > stack-whatsapp-bridge-id.txt
+
+      - run:
+          name: Validar archivo docker-compose.yml y cargar stack en Portainer
+          command: |
+            echo "Iniciando proceso de despliegue del stack en Portainer..."
+
+            # Leer el JWT guardado previamente
+            JWT=$(cat portainer-jwt.token)
+
+            # Leer el ID del stack desde el archivo
+            STACK_ID=$(cat stack-whatsapp-bridge-id.txt)
+
+            # Definir la ruta al archivo docker-compose.yml
+            DOCKER_COMPOSE_PATH="deploy/truenas/docker-compose.yml"
+
+            # Verificar si el archivo existe
+            if [ ! -f "$DOCKER_COMPOSE_PATH" ]; then
+              echo "Error: No se encontró el archivo en la ruta: $DOCKER_COMPOSE_PATH"
+              exit 1
+            fi
+
+            # Leer el contenido del archivo docker-compose.yml
+            STACK_FILE_CONTENT=$(cat "$DOCKER_COMPOSE_PATH")
+
+            ENDPOINT_ID="${ENDPOINT_ID}"  # ID del endpoint, configurado como variable de entorno
+            
+            # Variables de entorno para incluir
+            API_URL="${API_URL}"
+
+            # Validar variables de entorno
+            if [ -z "$JWT" ] || [ -z "$STACK_ID" ] || [ -z "$ENDPOINT_ID" ] \
+            || [ -z "$API_PORT" ]; then
+            echo "Faltan variables de entorno necesarias"
+            exit 1
+            fi
+
+            echo "Subiendo stack a Portainer con el ID $STACK_ID en el endpoint $ENDPOINT_ID..."
+            
+            # Escapar contenido del archivo Docker Compose con jq
+            ESCAPED_STACK_FILE_CONTENT=$(echo "$STACK_FILE_CONTENT" | jq -Rs .)
+
+            # Construir la sección "env" con las variables de entorno
+            ENV_VARS=$(cat \<<EOF
+            [
+              {"name": "API_URL", "value": "$API_URL"},
+              {"name": "API_PORT", "value": "$API_PORT"}
+            ]
+            EOF
+            )
+
+            # Llamar a la API de Portainer para actualizar el stack
+            RESPONSE=$(curl --silent --write-out "HTTPSTATUS:%{http_code}" -v --location --request PUT "${PORTAINER_HOST}/api/stacks/${STACK_ID}?endpointId=${ENDPOINT_ID}" \
+              --header "Authorization: Bearer $JWT" \
+              --header "Content-Type: application/json" \
+              --data-raw '{
+                "env": '"$ENV_VARS"',
+                "prune": true,
+                "pullImage": true,
+                "stackFileContent": '"$ESCAPED_STACK_FILE_CONTENT"'
+              }')
+
+            # Analizar respuesta HTTP
+            HTTP_STATUS=$(echo "$RESPONSE" | tr -d '\n' | sed -e 's/.*HTTPSTATUS://')
+            RESPONSE_BODY=$(echo "$RESPONSE" | sed -e 's/HTTPSTATUS\:.*//')
+
+            if [ "$HTTP_STATUS" -ne 200 ]; then
+              echo "Error al actualizar el stack en Portainer. Código HTTP: $HTTP_STATUS"
+              echo "Detalle de error: $RESPONSE_BODY"
+              exit 1
+            fi
+
+            echo "🚀 Stack actualizado exitosamente en Portainer (ID $STACK_ID)."
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - build-and-push-dockerhub:
+          filters:
+            branches:
+              only:
+                - develop
+                - deploy
+      - deploy-to-portainer:
+          requires:
+            - build-and-push-dockerhub
+          filters:
+            branches:
+              only:
+                - develop
+                - deploy
