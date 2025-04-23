@@ -13,7 +13,7 @@ services:
     environment:
       - DOMAIN=${DOMAIN}
     ports:
-      - 31018:${API_PORT}
+      - 31019:3000
     networks:
       - whatsapp
 
